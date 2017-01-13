@@ -1,0 +1,20 @@
+<GuessOutput>
+  <name>profound</name>
+  <long_name>COST PROFOUND</long_name>
+  <author>Joerg Steinkamp</author>
+  <use_tables>0</use_tables>
+  <file>
+    <name>vegstruct</name>
+    <description>Output for patch stucture analysis</description>
+    <column name="IID" type="i" length="5" dec="0" />
+    <column name="BAclass" type="f" length="8" dec="3" />
+  </file>
+  <file>
+    <name>mort</name>
+    <description>Mortality output</description>
+    <column name="IID" type="i" length="5" dec="0" />
+    <column name="dfgdfgd" type="f" length="8" dec="3" />
+  </file>
+</GuessOutput>
+
+
