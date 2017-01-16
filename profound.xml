@@ -17,7 +17,7 @@
     <column name="IID" type="i" length="5" dec="0" />
     <column name="dfgdfgd" type="f" length="8" dec="3" />
   </file>
-  <!--
+<!--
   <file>
     <name></name>
     <daily>0</daily>
@@ -31,7 +31,7 @@
     <column name="IID" type="i" length="5" dec="0" />
     <column name="dfgdfgd" type="f" length="8" dec="3" />
     </file>
-  -->
+-->
   <file>
     <name>test</name>
     <description>test no daily tag name</description>
@@ -40,6 +40,13 @@
   </file>
   <file>
     <name>test2</name>
+    <column name="IID" type="i" length="5" dec="0" />
+    <column name="dfgdfgd" type="f" length="8" dec="3" />
+  </file>
+  <file>
+    <name>test3</name>
+    <description>test daily</description>
+    <daily>1</daily>
     <column name="IID" type="i" length="5" dec="0" />
     <column name="dfgdfgd" type="f" length="8" dec="3" />
   </file>

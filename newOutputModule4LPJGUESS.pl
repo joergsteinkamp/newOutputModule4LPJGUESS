@@ -2,9 +2,6 @@
 
 use warnings;
 use strict;
-#use Getopt::Long qw(:config no_ignore_case);
-#use File::Basename;
-#use Time::gmtime;
 use XML::LibXML;
 
 my $fname = shift;
@@ -20,7 +17,7 @@ sub column_output($$$) {
 
     my $output_line = "";
     if ($use_tables) {
-        die ("'use_tables' not yet ready!");
+        die ("JS_DEBUG: 'use_tables' not yet ready!");
     } else {
         my $output_line = join "\n", map {
             "fprintf(out_${name}, ' %$_->{length}.$_->{dev}$_->{type} ', ". uc("${name}.$_->{name});");
@@ -108,7 +105,7 @@ sub tail(@) {
             my $dom = shift(@files);
             my $file_name = $dom->findvalue('./name');
             next if ($dom->findvalue('daily') eq "0" || !$dom->findvalue('daily'));
-            die("JS_DEBUG: daily not yet ready '$file_name'");
+            die("JS_DEBUG: daily not yet ready '$file_name'!");
         }
 
         $tail .= qq{    return;
