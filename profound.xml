@@ -6,12 +6,40 @@
   <file>
     <name>vegstruct</name>
     <description>Output for patch stucture analysis</description>
+    <daily>0</daily>
     <column name="IID" type="i" length="5" dec="0" />
     <column name="BAclass" type="f" length="8" dec="3" />
   </file>
   <file>
     <name>mort</name>
+    <daily>0</daily>
     <description>Mortality output</description>
+    <column name="IID" type="i" length="5" dec="0" />
+    <column name="dfgdfgd" type="f" length="8" dec="3" />
+  </file>
+  <!--
+  <file>
+    <name></name>
+    <daily>0</daily>
+    <description>test empty file name</description>
+    <column name="IID" type="i" length="5" dec="0" />
+    <column name="dfgdfgd" type="f" length="8" dec="3" />
+  </file>
+  <file>
+    <daily>0</daily>
+    <description>test no file name</description>
+    <column name="IID" type="i" length="5" dec="0" />
+    <column name="dfgdfgd" type="f" length="8" dec="3" />
+    </file>
+  -->
+  <file>
+    <name>test</name>
+    <description>test no daily tag name</description>
+    <column name="IID" type="i" length="5" dec="0" />
+    <column name="dfgdfgd" type="f" length="8" dec="3" />
+  </file>
+  <file>
+    <name>test2</name>
     <column name="IID" type="i" length="5" dec="0" />
     <column name="dfgdfgd" type="f" length="8" dec="3" />
   </file>
