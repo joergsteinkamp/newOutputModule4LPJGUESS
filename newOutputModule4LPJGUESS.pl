@@ -7,27 +7,6 @@ use XML::LibXML;
 
 my $fname = shift;
 
-#################################
-### Define the output culumns ###
-#################################
-
-sub column_output($$$) {
-    my $name       = shift;
-    my $column_ref = shift;
-    my $use_tables = shift;
-
-    my $output_line = "";
-    if ($use_tables) {
-        die ("JS_DEBUG: 'use_tables' not yet ready!");
-    } else {
-        my $output_line = join "\n", map {
-            "fprintf(out_${name}, ' %$_->{length}.$_->{dev}$_->{type} ', ". uc("${name}.$_->{name});");
-        } @$column_ref;
-        print($output_line);
-    }
-    return($output_line);
-}
-
 ############################################################
 ### function returning the beginning of the source files ###
 ###  .h .cpp                                             ###
@@ -245,10 +224,13 @@ sub tail(@) {
 */
     int m;\n
     if (date.year >= nyear_spinup) \{
-      double lon = gridcell.get_lon();
+};
+        if ($use_tables) {
+          $tail .= qq{      double lon = gridcell.get_lon();
       double lat = gridcell.get_lat();
       OutputRows out(output_channel, lon, lat, date.get_calendar_year());
 };
+}
         @files = @$ref_files;
         while(@files) {
             my $dom = shift(@files);
@@ -268,12 +250,12 @@ sub tail(@) {
                 while (@nodes) {
                     my $column = shift(@nodes);
                     ## results in a warning if 'cname' does not exist.
-                    my $cname = ($column->{cname} eq "") ? uc("${file_name}.$column->{name}") : $column->{cname};
-                    print "JS_DEBUG: $cname\n";
+                    my $cname = uc("${file_name}.$column->{name}");
+                    $cname = $column->{cname} if (grep(/^cname$/, keys %$column));
                     if ($column->{'type'} eq "s" || $column->{'type'} eq "i") {
-                        $tail .="      //fprintf(out_${file_name}, ' %$column->{length}$column->{type}', ". uc("${file_name}.$column->{name});\n");
+                        $tail .= "      fprintf(out_${file_name}, ' %$column->{length}$column->{type}', $cname);\n";
                     } else {
-                        $tail .= "      //fprintf(out_${file_name}, ' %$column->{length}.$column->{dec}$column->{type}', ". uc("${file_name}.$column->{name});\n");
+                        $tail .= "      fprintf(out_${file_name}, ' %$column->{length}.$column->{dec}$column->{type}', $cname);\n";
                     }
                 }
             }
@@ -292,9 +274,9 @@ sub tail(@) {
     return($tail);
 }
 
-#####################################
-#####################################
-#####################################
+###############################
+### END function definition ###
+###############################
 
 my $dom        = XML::LibXML->load_xml(location => $fname);
 my $name       = $dom->findnodes('/GuessOutput/name')->to_literal();
