@@ -114,7 +114,8 @@ sub tail(@) {
 /* DEFINE ANNUAL AND MONTHLY OUTPUT HERE
      1.) Create the appropriate stand/patch/vegetation loops around the following fprint statements.
      2.) Replace the uppercase variable names by the correct variable names of the LPJ-GUESS model
-*/
+     3.) and uncomment the fprint statements.
+*/\n
 };
         @files = @$ref_files;
         while(@files) {
@@ -124,14 +125,18 @@ sub tail(@) {
             my @nodes = $dom->findnodes("./column");
             while (@nodes) {
                 my $column = shift(@nodes);
+                ## results in a warning if 'cname' does not exist.
+                my $cname = ($column->{cname} eq "") ? uc("${file_name}.$column->{name}") : $column->{cname};
+                print "JS_DEBUG: $cname\n";
                 if ($column->{'type'} eq "s" || $column->{'type'} eq "i") {
-                    $tail .="    fprintf(out_${file_name}, ' %$column->{length}$column->{type}', ". uc("${file_name}.$column->{name});\n");
+                    $tail .="    //fprintf(out_${file_name}, ' %$column->{length}$column->{type}', ". uc("${file_name}.$column->{name});\n");
                 } else {
-                    $tail .= "    fprintf(out_${file_name}, ' %$column->{length}.$column->{dec}$column->{type}', ". uc("${file_name}.$column->{name});\n");
+                    $tail .= "    //fprintf(out_${file_name}, ' %$column->{length}.$column->{dec}$column->{type}', ". uc("${file_name}.$column->{name});\n");
                 }
             }
         }
-        $tail .= qq{    return;
+        $tail .= qq{
+    return;
   \}
 \}
 };
