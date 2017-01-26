@@ -24,6 +24,12 @@
     <daily>0</daily>
     <template>pft_columns</template>
   </file>
+  <file>
+    <name>mai</name>
+    <description>Mean annual stand volume increment</description>
+    <daily>0</daily>
+    <template>pft_columns</template>
+  </file>
   <!--
       Output per diameter class needs an extra field DClass
       and an extra loop over the ndiamclass.
