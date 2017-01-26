@@ -278,6 +278,7 @@ sub tail(@) {
 ### END function definition ###
 ###############################
 
+## read the XML input
 my $dom        = XML::LibXML->load_xml(location => $fname);
 my $name       = $dom->findnodes('/GuessOutput/name')->to_literal();
 my $long_name  = $dom->findnodes('/GuessOutput/long_name')->to_literal();
