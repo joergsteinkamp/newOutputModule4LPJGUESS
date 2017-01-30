@@ -8,3 +8,8 @@ The information needed to build the files must be in an XML file read by the XML
 
 * extend 'Table' output
 * daily output not yet implemented
+
+## Acknowledgment
+
+The development of this code profited from participating in activities of CA FP1304 PROFOUND
+
