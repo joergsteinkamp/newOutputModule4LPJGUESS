@@ -11,5 +11,5 @@ The information needed to build the files must be in an XML file read by the XML
 
 ## Acknowledgment
 
-The development of this code profited from participating in activities of CA FP1304 PROFOUND
+The development of this code profited from participating in activities of COST Action FP1304 PROFOUND
 

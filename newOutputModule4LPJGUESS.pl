@@ -131,7 +131,7 @@ sub init_output($$$) {
     \}
     ColumnDescriptors month_columns;
     ColumnDescriptors month_columns_wide;
-    xtring months[] = {'Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'};
+    xtring months[] = {\"Jan\",\"Feb\",\"Mar\",\"Apr\",\"May\",\"Jun\",\"Jul\",\"Aug\",\"Sep\",\"Oct\",\"Nov\",\"Dec\"};
     for (int i = 0; i < 12; i++) \{
       month_columns      += ColumnDescriptor(months[i], 8,  3);
       month_columns_wide += ColumnDescriptor(months[i], 10, 3);
