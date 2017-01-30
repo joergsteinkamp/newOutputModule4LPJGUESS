@@ -73,7 +73,7 @@ sub declare($$) {
         my $file_name = $dom->findvalue('./name');
         $declaration .= "    xtring file_${file_name};\n";
         if ($use_tables) {
-            $declaration .= "    Table *out_${file_name};\n";
+            $declaration .= "    Table out_${file_name};\n";
         } else {
             $declaration .= "    FILE *out_${file_name};\n";
         }
@@ -94,7 +94,7 @@ sub declare_ins($$) {
         my $dom = shift(@files);
         my $file_name = $dom->findvalue('./name');
         my $file_description = $dom->findvalue('./description');
-        $dec .= "    declare('file_$file_name', &file_$file_name, 300, '$file_description');\n";
+        $dec .= "    declare_parameter(\"file_$file_name\", &file_$file_name, 300, \"$file_description\");\n";
     }
     $dec .= qq{  \}
 
@@ -141,8 +141,8 @@ sub init_output($$$) {
     pft_columns += ColumnDescriptors(pfts, 8, 3);
     pft_columns += ColumnDescriptor("Total", 8, 3);
     ColumnDescriptors pft_columns_wide;
-    cmass_columns_wide += ColumnDescriptors(pfts, 10, 3);
-    cmass_columns_wide += ColumnDescriptor("Total", 10, 3);
+    pft_columns_wide += ColumnDescriptors(pfts, 10, 3);
+    pft_columns_wide += ColumnDescriptor("Total", 10, 3);
 
 };
         while (@files) {
