@@ -240,9 +240,9 @@ sub tail(@) {
                 my $cname = $dom->findvalue('./cname');
                 $cname = "XXX" if (!$cname);
                 if ($template =~ /month/) {
-                    $tail .= "      for (m=0;m<12;m++) {\n        out.add_value(out_$file_name, $cname\[m\]);\n      }\n";
+                    $tail .= "//      for (m=0;m<12;m++) {\n//        out.add_value(out_$file_name, $cname\[m\]);\n//      }\n";
                 } else {
-                    $tail .= "      out.add_value(out_$file_name, $cname);\n";
+                    $tail .= "//      out.add_value(out_$file_name, $cname);\n";
                 }
             } else {
                 next if ($dom->findvalue('daily') ne "0");
